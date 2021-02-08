@@ -16,18 +16,26 @@ BASE = HEIGHT - 20
 arr = random.sample(range(20, 450), NO_OF_BARS)
 
 pygame.init()
-pygame.display.set_caption("Sorting Algorithm Visualisation")
+pygame.display.set_caption("Sorting Algorithms Visualizer")
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 def introScreen():
-    font_ = pygame.font.SysFont('Candara', 80)
-    text_ = font_.render("Sorting Algorithms Visualisation", True, Color('cyan')) 
-    textRect_ = text_.get_rect()
-    textRect_.center = ((WIDTH//2), (HEIGHT//2))
+    font_ = pygame.font.SysFont('Berlin Sans FB', 100)
+    text_1 = font_.render("Sorting", True, Color('cyan'))
+    text_2 = font_.render("Algorithms", True, Color('cyan'))
+    text_3 = font_.render("Visualizer", True, Color('cyan'))
+    textRect_1 = text_1.get_rect()
+    textRect_2 = text_2.get_rect()
+    textRect_3 = text_3.get_rect()
+    textRect_1.center = ((WIDTH//2), (HEIGHT//2)-90)
+    textRect_2.center = ((WIDTH//2), (HEIGHT//2))
+    textRect_3.center = ((WIDTH//2), (HEIGHT//2)+90)
     screen.fill((30, 30, 40))
-    screen.blit(text_, textRect_)
+    screen.blit(text_1, textRect_1)
+    screen.blit(text_2, textRect_2)
+    screen.blit(text_3, textRect_3)
     pygame.display.update()
-    pygame.time.delay(2000)
+    pygame.time.delay(3000)
 
 def isQuit():
     for event in pygame.event.get():
