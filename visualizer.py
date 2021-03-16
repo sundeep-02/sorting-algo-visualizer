@@ -21,22 +21,25 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
 def introScreen():
     font_ = pygame.font.SysFont('Berlin Sans FB', 100)
-    text_1 = font_.render("Sorting", True, Color('cyan'))
-    text_2 = font_.render("Algorithms", True, Color('cyan'))
-    text_3 = font_.render("Visualizer", True, Color('cyan'))
-    textRect_1 = text_1.get_rect()
-    textRect_2 = text_2.get_rect()
-    textRect_3 = text_3.get_rect()
-    textRect_1.center = ((WIDTH//2), (HEIGHT//2)-90)
-    textRect_2.center = ((WIDTH//2), (HEIGHT//2))
-    textRect_3.center = ((WIDTH//2), (HEIGHT//2)+90)
-    screen.fill((30, 30, 40))
-    screen.blit(text_1, textRect_1)
-    screen.blit(text_2, textRect_2)
-    screen.blit(text_3, textRect_3)
-    pygame.display.update()
-    pygame.time.delay(3000)
-
+    while pygame.time.get_ticks() < 5000:
+        text_1 = font_.render("Sorting", True, Color('cyan'))
+        text_2 = font_.render("Algorithms", True, Color('cyan'))
+        text_3 = font_.render("Visualizer", True, Color('cyan'))
+        textRect_1 = text_1.get_rect()
+        textRect_2 = text_2.get_rect()
+        textRect_3 = text_3.get_rect()
+        textRect_1.center = ((WIDTH//2), (HEIGHT//2)-90)
+        textRect_2.center = ((WIDTH//2), (HEIGHT//2))
+        textRect_3.center = ((WIDTH//2), (HEIGHT//2)+90)
+        screen.fill((30, 30, 40))
+        screen.blit(text_1, textRect_1)
+        screen.blit(text_2, textRect_2)
+        screen.blit(text_3, textRect_3)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+        pygame.display.update()
+    
 def isQuit():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -142,11 +145,8 @@ def shellSort(arr):
         gap = gap // 2
 
 run = True
-intro = True
 while run:
-    if intro == True:
-        introScreen()
-        intro = False
+    introScreen()
 
     if isQuit():    run = False
     execute = 0
